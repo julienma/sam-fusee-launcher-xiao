@@ -1,7 +1,7 @@
 
 
 # sam-fusee-launcher
-Fusee Launcher for the adafruit trinket m0 board. Based on [sam fusee launcher](https://github.com/atlas44/sam-fusee-launcher).
+Fusee Launcher for the openschemes SAMD21 Loader board. Based on [sam fusee launcher](https://github.com/atlas44/sam-fusee-launcher).
 
 Build and tested with Arduino SDK.
 
