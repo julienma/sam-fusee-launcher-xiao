@@ -5,7 +5,7 @@ Fusee Launcher for the openschemes SAMD21 Loader board. Based on [sam fusee laun
 
 ![Top-Bottom_Pic](./images/Top_Bottom%20-%20Small.jpg)
 
-[If you would like to purchase, please see Tindie Page](https://www.tindie.com/products/13711/)
+[If you would like to purchase a pre-built board, please see Tindie Page](https://www.tindie.com/products/13711/)
 
 Build and tested with Arduino SDK.
 
