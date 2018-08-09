@@ -5,10 +5,11 @@ Fusee Launcher for the openschemes SAMD21 Loader board. Based on [sam fusee laun
 
 Build and tested with Arduino SDK.
 
-# Install
-* Download and extract the firmware: [CTCaer Hekate 3.2](https://github.com/noemu/sam-fusee-launcher/releases/tag/v0.1), [SXLoader 1.0](https://github.com/noemu/sam-fusee-launcher/releases/tag/v0.1-sx)
-* Connect the Trinket M0 and press the reset button twice
-* Open the TRINKETBOOT device and copy the extracted files on the device
+# Install a Pre-built Firmware without Compiling
+* Download a firmware zip file from the firmware directory and open
+* Plug the SAMD Loader into USB, and double click reset
+* Drop the 3 files from inside the zip onto USB.  They will be autoflashed as soon as they are written
+* Unplug SAMD Loader, it's now flashed to the new firmware!
 
 
 # Build
@@ -23,12 +24,12 @@ Summary:
 * Select the Trinket M0 with "Tools > Board > Adafruit Trinket M0"
 
 Go to Sketch > Include Library > Manage Libraries
-Install USBHOst, Adafruit DotStar and FlashStorage.
+Install USBHOst, and FlashStorage.
 
-Connect the Trinket m0 to your computer and double Click on the Reset Button.
-Your computer should detect the Trinket m0 automatically (On win7 install this [driver](https://github.com/adafruit/Adafruit_Windows_Drivers/releases/download/2.2.0/adafruit_drivers_2.2.0.0.exe))
+Connect the SAMD Loader to your computer and double Click on the Reset Button.
+Your computer should detect the SAMD Loader automatically (On win7 install this [driver](https://github.com/adafruit/Adafruit_Windows_Drivers/releases/download/2.2.0/adafruit_drivers_2.2.0.0.exe))
 
-Got to Tools > Port and select your conneted trinket m0
+Got to Tools > Port and select your connected SAMD Loader
 
 Download this Repository, open main/main.ino with Arduino IDE.
 
@@ -36,12 +37,12 @@ Then Verify/Compile (Ctrl + R)
 If no errors appear
 Upload (Ctrl + U).
 
-The trinket is ready for use.
+The SAMD Loader is ready for use.
 
 LED is:
-* blinking orange -> searching for Switch in RCM mode
-* red -> no Switch found
-* off (except the power LED) -> finished successfully
+* Steady Blue - Failed to initialize USB on SAMD, check battery
+* Quick, Steady Blinking - Ready to send, searching for Switch.  Insert RCM jig, Hold VOL + and Press Power
+* Short/Long (Ta Daa!) Blink - Payload sent and activated.
 
 # Update the Payload
 download your favorit [payload](https://github.com/CTCaer/hekate/releases) as a `.bin` file.
@@ -53,17 +54,11 @@ in the same folder as the .bin file is located, a new .h file should appear. Cop
 Then just compile and upload.
 
 # Hardware
-[trinket m0](https://www.adafruit.com/product/3500) + [liPoly charger](https://www.adafruit.com/product/2124) + Button + 150mAh LiPoly Battery
-
-![Layout](./images/layout.png)
-
-![front](./images/front.jpg)
-
-![back](./images/back.jpg)
+[SAMD Loader](https://www.tindie.com/products/13711/) 
 
 Power consumption:
-* Idle with error and power LED: 3.5mA
-* Idle with only power LED: 1.3mA
+* Idle with error and power LED: 2.5mA
+* Idle with only power LED: 0.8mA
 * Running: 12.7mA
 
 # Finished Dongle
@@ -71,18 +66,13 @@ Micro USB to USB C converter
 
 ![microUsbToUsbC](./images/microUsbToUsbC.jpg)
 
-![inside](./images/innenLeben.jpg)
-
-![dongle](./images/dongle.jpg)
-
-![plugged](./images/plugged.jpg)
-
-[![Test](https://img.youtube.com/vi/RDU1Ht54ouM/0.jpg)](https://www.youtube.com/watch?v=RDU1Ht54ouM)
+[![Test](https://youtu.be/HImP8QRGi0U/0.jpg)](https://youtu.be/HImP8QRGi0U)
 
 # Thanks to:
 * [atlas44](https://github.com/atlas44/sam-fusee-launcher)
 * [CTCaer](https://github.com/CTCaer/hekate)
 * [Ninoh-FOX](https://www.elotrolado.net/hilo_tutorial-crea-tu-propio-dongle-portatil-para-cargar-payloads-it-is-easy_2287822)
+* [noemu] (https://github.com/noemu/sam-fusee-launcher)
 * and everyone else i forgot
 
 
