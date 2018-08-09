@@ -61,9 +61,9 @@ Then just compile and upload.
 [SAMD Loader](https://www.tindie.com/products/13711/) 
 
 Power consumption:
-* Idle with error and power LED: 2.5mA
-* Idle with only power LED: 0.8mA
-* Running: 12.7mA
+* Idle with error and power LED: 1.1mA
+* Idle with only power LED: 0.47mA
+* Running: 8.9mA
 
 # Finished Dongle
 Micro USB to USB C converter
