@@ -14,14 +14,9 @@
 
 // Select bin file payload here
 // Must contain bin file as fuseeBin array with correct FUSEE_BIN_SIZE
-#include "Hekate_Payload_tumger.h"
-//#include "hekate_ctcaer_3.2.h"
-//#include "hekate_ctcaer_4.0.h"
-//#include "SXLauncher.h"
-//#include "ReiNX.h"
-
 // Don't use serial LED, just use the onboard activity LED
 #define led 13
+#include "hekate_ctcaer_6.0.7.h"
 
 void setup()
 {
