@@ -5,55 +5,47 @@
 // To flash: Compile and upload using arduino, or just drop a pre-compiled UF2 onto the flash drive.
 // To backup your custom arduino build.  Flash via arduino, double click reset and copy the 3 files from the emulated flash drive to your PC
 
-
-#include <FlashAsEEPROM.h>
-#include <FlashStorage.h>
-#include <Usb.h>
 #include <Arduino.h>
+#include "xiaoLed.h"
 #include "fuseegelee.h"
 
 // Select bin file payload here
 // Must contain bin file as fuseeBin array with correct FUSEE_BIN_SIZE
-// Don't use serial LED, just use the onboard activity LED
-#define led 13
 #include "hekate_ctcaer_6.0.7.h"
 
 void setup()
 {
-  pinMode(led, OUTPUT);
-  digitalWrite(led, HIGH);
+  ledInit();
+
   // Try to bring up USB
-  if (usbInit() == -1){
-      digitalWrite(led, HIGH);   // LED on full time means usb Init failed
-      SCB->SCR |= SCB_SCR_SLEEPDEEP_Msk; /* Enable deepsleep */
-      __DSB(); /* Ensure effect of last store takes effect */
-      __WFI(); /* Enter sleep mode */
-  }
+  // LED on full time means USB Init failed
+  if (usbInit() == -1) sleepDeep(-1);
+
   // OK, USB is up.  Let's party
   // Search for the Tegra.  Blink rapidly (~5 Hz) while searching
   while (!searchTegraDevice())
   {
-    digitalWrite(led,HIGH);
+    setLedColor("orange");
     delay(20); //20ms on
-    digitalWrite(led,LOW);
+    setLedColor("off");
     delay(180); //180ms off
   }
+
   // There is a delay here when Tegra wakes, the fast blinking stops for a moment
   // Next, you will see short/long LED blink (ta daa!) on the LED as the payload is sent and launched
   // When launching SXlauncher, keep holding + for SXOS menu if desired 
-  digitalWrite(led, HIGH);                  // Short blink when starting the party (ta)
+  setLedColor("blue");                      // Short blink when starting the party (ta)
   delay(20);
-  setupTegraDevice();                       // Do USB setup for fusee gelee 
-  digitalWrite(led, LOW);                   // LED Off when sending 
+  setupTegraDevice();                       // Do USB setup for fusee gelee
+
+  setLedColor("off");                       // LED Off when sending
   sendPayload(fuseeBin, FUSEE_BIN_SIZE);    // Smash & upload bin file from header
-  digitalWrite(led, HIGH);                  // On for a medium flash when launching (daa!)
+
+  setLedColor("blue");                      // On for a medium flash when launching (daa!)
   launchPayload();                          // Launch bin file
 
   // Turn off LED and go into deep sleep
-  digitalWrite(led,LOW);
-    SCB->SCR |= SCB_SCR_SLEEPDEEP_Msk; /* Enable deepsleep */
-  __DSB(); /* Ensure effect of last store takes effect */
-  __WFI(); /* Enter sleep mode */
+  sleepDeep(1);
 }
 
 void loop()
