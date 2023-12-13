@@ -3,21 +3,18 @@
 # sam-fusee-launcher-xiao
 Fusee Launcher for the Seeed Studio XIAO SAMD21 board. Based on [sam fusee launcher](https://github.com/atlas44/sam-fusee-launcher).
 
+![](images/seeeduino-xiao.jpg)
+
 Build and tested with Arduino SDK.
 
-* Download a firmware zip file from the firmware directory and open
-* Plug the board into USB, and double click reset
-* Drop the 3 files from inside the zip onto USB.  They will be autoflashed as soon as they are written
-* Unplug board, it's now flashed to the new firmware!
-
 # Build
-Go through [trinket m0: arduino-ide-setup](https://learn.adafruit.com/adafruit-trinket-m0-circuitpython-arduino/arduino-ide-setup) and [trinket m0: arduino-ide-setup2](https://learn.adafruit.com/adafruit-trinket-m0-circuitpython-arduino/using-with-arduino-ide)
+Go through [Download Arduino and install Arduino driver](https://wiki.seeedstudio.com/Download-Arduino-and-install-Arduino_Driver/) and [How to Add Seeed boards to Arduino IDE](https://wiki.seeedstudio.com/Seeed_Arduino_Boards/)
 
 Summary:
 * Download and install arduino IDE http://www.arduino.cc/en/Main/Software
 * In Arduino: go to "Prefences" and add to "Additional Board Manager URLs" following URL:
 *  `https://files.seeedstudio.com/arduino/package_seeeduino_boards_index.json`
-* go to "Tools > Board > Board Manager" and select Type: xiao and
+* Go to "Tools > Board > Board Manager" and select Type: xiao and
 * Install "Seeed SAMD Boards" by Seeed Studio
 * Select the Seeeduino XIAO with "Tools > Board > Seeed SAMD Boards"
 
@@ -44,12 +41,15 @@ Download your favorite [payload](https://github.com/CTCaer/hekate/releases) as a
 Run the python script `tools/binConverter.py` with the path to the file as an argument:
 `python binConverter.py "C:\pathToMyPayload\hekateNew.bin` or just drag the .bin file on the script
 
-in the same folder as the .bin file is located, a new .h file should appear. Copy the new file to the main folder and in the main.ino go to line 6 `#include "hekate_ctcaer_2.3.h"` and rename it to your new file `#include "hekateNew.h"`
+in the same folder as the .bin file is located, a new .h file should appear. Copy the new file to the main folder and in the main.ino go to line 6 `#include "hekate_ctcaer_6.0.7.h"` and rename it to your new file `#include "hekateNew.h"`
 
 Then just compile and upload.
 
 # Hardware
 [XIAO SAMD21 - Cortex M0+](https://www.seeedstudio.com/Seeeduino-XIAO-Arduino-Microcontroller-SAMD21-Cortex-M0+-p-4426.html)
+
+![](images/wiring.jpg)
+![](images/soldered.jpg)
 
 # Thanks to:
 * [atlas44](https://github.com/atlas44/sam-fusee-launcher)
